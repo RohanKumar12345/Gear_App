@@ -7,12 +7,18 @@
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/back_arrow.xml" value="0.123" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/button_bg.xml" value="0.123" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/hometext_bg.xml" value="0.123" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/onhold_recylview.xml" value="0.123" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/search.xml" value="0.123" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_dasbord.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_login.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_main.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_scanner.xml" value="0.165625" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_select_recipienttype.xml" value="0.264" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_delivered.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_on__hold_.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_to__do_.xml" value="0.264" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/onhold_recylerview.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/recipient_reylerview.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/todo_recylview.xml" value="0.23423423423423423" />
       </map>
     </option>
