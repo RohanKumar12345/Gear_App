@@ -1,0 +1,81 @@
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <View
+        android:layout_width="match_parent"
+        android:background="#E8ECF5"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+
+
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SG010632060179"
+                android:id="@+id/id"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="14dp"/>
+
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_toRightOf="@id/id"
+                android:background="@drawable/hometext_bg"
+
+                android:text="Home"
+                android:textColor="@color/pink"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="#8C9AA8"
+            android:textSize="10dp"
+            android:fontFamily="@font/roboto"
+            android:text="c2-X095311,530973"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto"
+            android:text="BLOCK 973,HOUSANG STREET 91,#14-210"
+
+            android:textColor="#8C9AA8"
+            android:textSize="10dp"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
