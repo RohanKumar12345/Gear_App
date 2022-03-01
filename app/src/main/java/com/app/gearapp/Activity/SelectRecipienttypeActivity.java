@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.app.gearapp.Adapter.RecipientAdapter;
 import com.app.gearapp.Adapter.ToDoAdapter;
@@ -36,6 +37,11 @@ public class SelectRecipienttypeActivity extends AppCompatActivity {
         RecipientAdapter adapter1 = new RecipientAdapter(getApplicationContext());
         binding.ononeRecyclerview.setAdapter(adapter1);
 
-
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

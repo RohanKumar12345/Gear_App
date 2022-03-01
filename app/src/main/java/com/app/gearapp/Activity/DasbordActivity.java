@@ -1,32 +1,57 @@
 package com.app.gearapp.Activity;
 
+import static com.app.gearapp.R.drawable.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.SearchManager;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.TextWatcher;
+
+import com.google.android.material.appbar.MaterialToolbar;
+import com.leo.materialsearchview.MaterialSearchView;
+import com.leo.materialsearchview.listeners.OnTextChangeListener;
+
+import android.text.style.ForegroundColorSpan;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.app.gearapp.Adapter.TabAdapter;
 import com.app.gearapp.R;
 import com.app.gearapp.databinding.ActivityDasbordBinding;
 import com.google.android.material.tabs.TabLayout;
+import com.leo.materialsearchview.MaterialSearchView;
 
 public class DasbordActivity extends AppCompatActivity {
 
     ActivityDasbordBinding binding;
+    int i = arrow_back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityDasbordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        final MaterialSearchView materialSearchView = new MaterialSearchView(this);
 
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("To-Do"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Delivered"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("On-Hold"));
+        binding.tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-       binding.tabLayout.addTab(  binding. tabLayout.newTab().setText("To-Do"));
-        binding. tabLayout.addTab(  binding. tabLayout.newTab().setText("Delivered"));
-        binding. tabLayout.addTab(  binding. tabLayout.newTab().setText("On-Hold"));
-        binding.  tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final TabAdapter adapter = new TabAdapter(this,getSupportFragmentManager(),
-                binding.   tabLayout.getTabCount());
+        final TabAdapter adapter = new TabAdapter(this, getSupportFragmentManager(),
+                binding.tabLayout.getTabCount());
         binding.viewPager.setAdapter(adapter);
         binding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout));
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -34,12 +59,50 @@ public class DasbordActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 binding.viewPager.setCurrentItem(tab.getPosition());
             }
+
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
             }
+
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
+
+        binding.search.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseCompatLoadingForDrawables")
+            @Override
+            public void onClick(View v) {
+                //  Toast.makeText(DasbordActivity.this, "Showing Search from ImageView", Toast.LENGTH_LONG).show();
+
+                //The method call where magic happens.
+                materialSearchView.setOnTextChangeListener(new OnTextChangeListener() {
+                    @Override
+                    public void setOnTextChangeListener(String newText) {
+
+
+                        if (binding.tabLayout.newTab().equals("To-Do")){
+                            Toast.makeText(DasbordActivity.this, "To Do", Toast.LENGTH_SHORT).show();
+                        }else if (binding.tabLayout.newTab().equals("Delivered")){
+                            Toast.makeText(DasbordActivity.this, "Delivered", Toast.LENGTH_SHORT).show();
+                        } else if (binding.tabLayout.newTab().equals("On-Hold")) {
+                            Toast.makeText(DasbordActivity.this, "On-Hold", Toast.LENGTH_SHORT).show();
+                        }
+                     //   Log.e("new", newText);
+
+                    }
+                });
+
+                materialSearchView.showKeyBoardDefault(true);
+                //setBackButtonDrawable((R.drawable.arrow_back));
+                materialSearchView.show(v);
+            }
+        });
+
+
     }
+
+
 }
+

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.app.gearapp.Adapter.DeliveredAdapter;
 import com.app.gearapp.Adapter.ToDoAdapter;
 import com.app.gearapp.R;
 import com.app.gearapp.databinding.FragmentDeliveredBinding;
@@ -28,7 +29,7 @@ public class DeliveredFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.DeliveredRecyclerView.setLayoutManager(layoutManager);
         binding.DeliveredRecyclerView.setHasFixedSize(true);
-        ToDoAdapter adapter=new ToDoAdapter(getContext());
+        DeliveredAdapter adapter=new DeliveredAdapter(getContext());
         binding.DeliveredRecyclerView.setAdapter(adapter);
 
 

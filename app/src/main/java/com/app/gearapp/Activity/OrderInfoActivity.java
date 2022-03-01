@@ -4,29 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 
 import com.app.gearapp.R;
-import com.app.gearapp.databinding.ActivityLoginBinding;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.app.gearapp.databinding.ActivityOrderInfoBinding;
 
-public class LoginActivity extends AppCompatActivity {
+public class OrderInfoActivity extends AppCompatActivity {
+    ActivityOrderInfoBinding binding;
 
-    ActivityLoginBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityLoginBinding.inflate(getLayoutInflater());
+        binding=ActivityOrderInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
 
-        binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
+        binding.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//
-                Intent intent=new Intent(getApplicationContext(),DasbordActivity.class);
+                Intent intent=new Intent(getApplicationContext(),DetailsActivity.class);
                 startActivity(intent);
             }
         });

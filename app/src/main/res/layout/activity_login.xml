@@ -96,11 +96,12 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_marginLeft="17dp"
                     android:layout_marginTop="20dp"
+                    app:cornerRadius="5dp"
                     android:layout_marginRight="17dp"
                     android:background="@drawable/button_bg"
                     android:text="Login"
