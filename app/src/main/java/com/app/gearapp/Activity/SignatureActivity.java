@@ -1,24 +1,28 @@
 package com.app.gearapp.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.gearapp.R;
-import com.app.gearapp.databinding.ActivityIgnatureBinding;
+import com.app.gearapp.databinding.ActivitySignatureBinding;
 import com.github.gcacace.signaturepad.views.SignaturePad;
 
 public class SignatureActivity extends AppCompatActivity {
-    ActivityIgnatureBinding binding;
+    ActivitySignatureBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityIgnatureBinding.inflate(getLayoutInflater());
+        binding = ActivitySignatureBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.back.setOnClickListener(new View.OnClickListener() {
@@ -29,13 +33,21 @@ public class SignatureActivity extends AppCompatActivity {
         });
 
         binding.resign.setEnabled(false);
-     binding.confirm.setEnabled(false);
+        binding.confirm.setEnabled(false);
 
-        binding.mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
 
+        binding.resign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.signaturePad.clear();
+            }
+        });
+
+
+        binding.signaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
-                //Event triggered when the pad is touched
+
             }
 
             @Override
@@ -48,27 +60,16 @@ public class SignatureActivity extends AppCompatActivity {
 
             @Override
             public void onClear() {
-                binding.resign.setEnabled(false);
-                binding.confirm.setEnabled(false);
-
+                //mSignaturePad.clear();
                 //Event triggered when the pad is cleared
             }
         });
 
-        binding.resign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                binding.mSignaturePad.clear();
-            }
-        });
-
-
         binding.confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),DilverconfirmActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DilverconfirmActivity.class);
                 startActivity(intent);
-              Toast.makeText(SignatureActivity.this, "Next Page", Toast.LENGTH_SHORT).show();
             }
         });
     }

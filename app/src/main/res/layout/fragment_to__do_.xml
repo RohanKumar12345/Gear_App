@@ -1,37 +1,129 @@
-<LinearLayout android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="#F5F7FB"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
 
-
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#B8BEC5"
-        android:textSize="15dp"
-        android:layout_margin="8dp"
-        android:text="655 Entries"/>
+        android:layout_height="match_parent"
+        android:background="#F5F7FB"
+        android:orientation="vertical">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
+        <TextView
+            android:id="@+id/itme_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/TodoRecyclerView" />
+            android:layout_margin="8dp"
+            android:text=""
+            android:textColor="#B8BEC5"
+            android:textSize="15dp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/scan"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="30dp"
-            android:src="@drawable/scanner_img" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-</LinearLayout>
+            <pl.droidsonroids.gif.GifTextView
+                android:id="@+id/spin_kit"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/loder"
+                android:visibility="gone" />
+
+<!--            <com.github.ybq.android.spinkit.SpinKitView-->
+<!--                android:id="@+id/spin_kit"-->
+<!--                style="@style/SpinKitView.Circle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:visibility="gone"-->
+<!--                app:SpinKit_Color="@color/loadercolor" />-->
+
+            <LinearLayout
+                android:id="@+id/emty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/empty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Hold Item"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="No on-hold items yet"
+                    android:textColor="@color/textcolor"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/TodoRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+
+            </androidx.core.widget.NestedScrollView>
+
+
+<!--            <com.github.ybq.android.spinkit.SpinKitView-->
+<!--             -->
+<!--                style="@style/SpinKitView.Circle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:visibility="gone"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                app:SpinKit_Color="@color/loadercolor" />-->
+
+            <pl.droidsonroids.gif.GifTextView
+                android:id="@+id/spin_kits"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/loder"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="30dp"
+                android:src="@drawable/scanner_img" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+

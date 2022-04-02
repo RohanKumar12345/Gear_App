@@ -30,13 +30,13 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SG010632060179"
-                android:id="@+id/id"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="14dp"/>
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
 
             <TextView
@@ -58,6 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textColor="#8C9AA8"
+            android:visibility="gone"
             android:textSize="10dp"
             android:fontFamily="@font/roboto"
             android:text="c2-X095311,530973"/>
@@ -65,7 +66,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:id="@+id/address"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto"
             android:text="BLOCK 973,HOUSANG STREET 91,#14-210"
 

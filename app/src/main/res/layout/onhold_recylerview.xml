@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-
-
+    android:id="@+id/linear"
     android:orientation="vertical">
 
     <View
@@ -35,7 +34,7 @@
                 android:text="SG010632060179"
                 android:textColor="@color/black"
                 android:textSize="14dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
 
             <TextView
@@ -56,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:visibility="gone"
             android:fontFamily="@font/roboto"
             android:text="c2-X095311,530973"
             android:textColor="#8C9AA8"
@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto"
+            android:id="@+id/address"
             android:text="BLOCK 973,HOUSANG STREET 91,#14-210"
 
             android:textColor="#8C9AA8"
@@ -77,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto"
+            android:visibility="gone"
             android:text="Buyer Not On Location"
             android:textColor="@color/pink"
             android:textSize="10dp"

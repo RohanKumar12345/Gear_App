@@ -30,7 +30,6 @@
             android:text="Proof of delivery"
             android:textColor="@color/white" />
 
-
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -50,7 +49,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
 
                 <TextView
                     android:id="@+id/recipt"

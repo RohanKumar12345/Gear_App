@@ -10,4 +10,5 @@
     <color name="gray_black">#3f465d</color>
     <color name="pink">#ff7d9c</color>
     <color name="textcolor">#B8BEC5</color>
+    <color name="loadercolor">#d6d6d6</color>
 </resources>

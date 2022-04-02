@@ -31,8 +31,16 @@
         <item name="materialThemeOverlay">@style/ButtonStyleTextColor</item>
     </style>
 
+
+  <style name="MyButtonGray" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/ButtonStyleTextColor2</item>
+    </style>
+
     <style name="ButtonStyleTextColor">
         <item name="colorPrimary">@color/pink</item>
+    </style>
+    <style name="ButtonStyleTextColor2">
+        <item name="colorPrimary">#efefef</item>
     </style>
 
 <style name="MyButtonTheme1" parent="Widget.MaterialComponents.Button">
@@ -41,6 +49,19 @@
 
     <style name="ButtonStyleTextColor1">
         <item name="colorPrimary">@color/black</item>
+    </style>
+
+
+    <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+  <style name="MyCustomTextAppearance1" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+
+        <item name="android:textAllCaps">false</item>
     </style>
 
 

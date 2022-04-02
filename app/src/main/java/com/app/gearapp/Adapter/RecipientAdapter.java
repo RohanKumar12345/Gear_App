@@ -12,15 +12,20 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.gearapp.Activity.ProofOfDeliveryActivity;
+import com.app.gearapp.Model.RecipientModel;
 import com.app.gearapp.R;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.ArrayList;
+
 public class RecipientAdapter extends RecyclerView.Adapter<RecipientAdapter.ViewHolder> {
     Context context;
+    ArrayList<RecipientModel> recipientModels;
 
-    public RecipientAdapter(Context context) {
+    public RecipientAdapter(Context context, ArrayList<RecipientModel> recipientModels) {
         this.context = context;
+        this.recipientModels = recipientModels;
     }
 
     @NonNull
@@ -34,24 +39,28 @@ public class RecipientAdapter extends RecyclerView.Adapter<RecipientAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        if (recipientModels.get(position).getRecipient_type().equalsIgnoreCase("Recipient")){
+            holder.card.setText(recipientModels.get(position).getRecipient());
+        }else {
+            holder.card.setVisibility(View.GONE);
+        }
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, ProofOfDeliveryActivity.class);
+                intent.putExtra("recipient_type",recipientModels.get(position).getRecipient());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });
-//        MaterialRippleLayout.on(holder.card)
-//                .rippleColor(Color.RED)
-//                .create();
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 6;
+        return recipientModels.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -7,30 +7,51 @@
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/back_arrow.xml" value="0.123" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/bottom_bg.xml" value="0.1925" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/button_bg.xml" value="0.123" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/call.xml" value="0.1545" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/check_icon.xml" value="0.168" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/dase_line.xml" value="0.1925" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/fillter.xml" value="0.204" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/hometext_bg.xml" value="0.123" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/image_bg.xml" value="0.1925" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/layout_bg.xml" value="0.1925" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/message.xml" value="0.1545" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/onhold_bg.xml" value="0.1545" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/onhold_recylview.xml" value="0.123" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/photo_bg.xml" value="0.1925" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/scanner_img.xml" value="0.1545" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/drawable/search.xml" value="0.123" />
-        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_dasbord.xml" value="0.1" />
-        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_details.xml" value="0.1875" />
-        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_dilverconfirm.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_add_mark.xml" value="0.1" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_dasbord.xml" value="0.16" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_details.xml" value="0.2" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_dilverconfirm.xml" value="0.2" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_dilverdconfirm.xml" value="0.2" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_ignature.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_login.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_main.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_notification.xml" value="0.16666666666666666" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_notification_full_detaisl.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_on_hold.xml" value="0.152" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_order_info.xml" value="0.2" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_proof_of_delivery.xml" value="0.2" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_scanner.xml" value="0.165625" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_scc.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_select_recipienttype.xml" value="0.264" />
-        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/bottom_nav.xml" value="0.3592814371257485" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/activity_signature.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/addmark_recylview.xml" value="0.2" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/bottom_nav.xml" value="0.1" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/bottomfillter.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/customview.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/edittext.xml" value="0.136" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_all.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_announcement.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_compesation.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_delivered.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_on__hold_.xml" value="0.1875" />
-        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_to__do_.xml" value="0.264" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_to__do_.xml" value="0.1" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/fragment_work.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/network_layout.xml" value="0.152" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/notfication_recylview.xml" value="0.1875" />
+        <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/onhold_bg.xml" value="0.16471784443314694" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/onhold_recylerview.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/recipient_reylerview.xml" value="0.1875" />
         <entry key="..\:/Swa Softect/Application/GearApp/app/src/main/res/layout/todo_recylview.xml" value="0.23423423423423423" />

@@ -33,20 +33,20 @@
         <ImageView
             android:id="@+id/fillter"
             android:layout_width="30dp"
-            android:padding="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="5dp"
+            android:padding="5dp"
             android:src="@drawable/fillter"
             app:tint="#c5c5c5" />
 
         <ImageView
             android:id="@+id/notification"
-            android:padding="5dp"
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/fillter"
+            android:padding="5dp"
             android:src="@drawable/notification" />
 
         <ImageView
@@ -69,6 +69,7 @@
         android:layout_below="@+id/appbar"
         android:background="@color/black"
         app:tabIndicatorColor="@color/pink"
+        app:tabTextAppearance="@style/MyCustomTextAppearance1"
         app:tabTextColor="@color/white">
 
     </com.google.android.material.tabs.TabLayout>

@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scanner Code"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginRight="17dp"
+            android:hint="OR Code"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="#000000"
+            app:boxStrokeWidth="2dp"
+
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="#3F465D">
+
+            <EditText
+                android:id="@+id/qrcode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-17dp"
+                android:layout_marginTop="10dp"
+                android:inputType="textCapCharacters"
+                android:singleLine="true"
+                android:textAllCaps="true"
+                android:textColor="@color/gray_black"
+                android:textColorHint="@color/black"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/qr_confirm"
+            style="@style/MyButtonTheme1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="60dp"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="5dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

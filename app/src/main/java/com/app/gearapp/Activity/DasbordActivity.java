@@ -2,41 +2,43 @@ package com.app.gearapp.Activity;
 
 import static com.app.gearapp.R.drawable.*;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
-import android.app.SearchManager;
-import android.content.Context;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.TextWatcher;
 
-import com.google.android.material.appbar.MaterialToolbar;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
+
+import com.app.gearapp.MainActivity;
+import com.app.gearapp.R;
+import com.app.gearapp.databinding.ActivityDasbordBinding;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
 import com.leo.materialsearchview.MaterialSearchView;
 import com.leo.materialsearchview.listeners.OnTextChangeListener;
 
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.SearchView;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.gearapp.Adapter.TabAdapter;
-import com.app.gearapp.R;
-import com.app.gearapp.databinding.ActivityDasbordBinding;
 import com.google.android.material.tabs.TabLayout;
-import com.leo.materialsearchview.MaterialSearchView;
 
 public class DasbordActivity extends AppCompatActivity {
 
     ActivityDasbordBinding binding;
     int i = arrow_back;
 
+    String listfragemt="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +47,34 @@ public class DasbordActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         final MaterialSearchView materialSearchView = new MaterialSearchView(this);
 
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("To-Do"));
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Delivered"));
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("On-Hold"));
-        binding.tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+            binding.tabLayout.addTab(binding.tabLayout.newTab().setText("To-Do"));
+            binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Delivered"));
+            binding.tabLayout.addTab(binding.tabLayout.newTab().setText("On-Hold"));
+            binding.tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+            connected = true;
+        } else
+
+            alirtDilog();
+        connected = false;
+//
+
+
+
+        binding.notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
         final TabAdapter adapter = new TabAdapter(this, getSupportFragmentManager(),
                 binding.tabLayout.getTabCount());
         binding.viewPager.setAdapter(adapter);
@@ -66,6 +91,25 @@ public class DasbordActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+
+        listfragemt=getIntent().getStringExtra("listfragment");
+
+//        if (listfragemt.equals("listfragment")){
+//            Fragment fragment = new TestFragment();
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+//        }else {
+//
+//        }
+
+        binding.fillter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomFillter();
+
             }
         });
 
@@ -103,6 +147,38 @@ public class DasbordActivity extends AppCompatActivity {
 
     }
 
+
+    public void alirtDilog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(DasbordActivity.this);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.network_layout, viewGroup, false);
+        builder.setView(dialogView);
+        builder.setCancelable(false);
+        AlertDialog alertDialog = builder.create();
+
+        TextView ok = dialogView.findViewById(R.id.ok);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+
+            }
+        });
+
+        alertDialog.show();
+    }
+
+
+    public void bottomFillter(){
+        BottomSheetDialog bottomSheetDialog=new BottomSheetDialog(DasbordActivity.this);
+        View sheetView = getLayoutInflater().inflate(R.layout.bottomfillter, null);
+        bottomSheetDialog.setContentView(sheetView);
+
+
+        bottomSheetDialog.show();
+
+    }
 
 }
 

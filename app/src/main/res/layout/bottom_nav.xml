@@ -3,7 +3,6 @@
     style="@style/AppBottomSheetDialogTheme"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:orientation="vertical">
 
     <LinearLayout
@@ -38,12 +37,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="SG010632060179"
+            android:id="@+id/id"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content">
 
             <com.google.android.material.button.MaterialButton
@@ -82,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Joshuo Neo"
+            android:id="@+id/name"
             android:textColor="@color/pink"
             android:textStyle="bold" />
 
@@ -90,6 +90,7 @@
             android:layout_height="wrap_content"
             android:text="239 Hougang Street 22,#07-01,530239"
             android:textColor="#3F465D"
+            android:id="@+id/address"
             android:textSize="10dp" />
 
 
@@ -106,6 +107,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:id="@+id/whatsapp"
                 app:cardBackgroundColor="#ffe5eb"
                 app:cardCornerRadius="5dp">
 
@@ -122,9 +124,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-
                 android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:id="@+id/phone"
                 app:cardBackgroundColor="#ffe5eb"
                 app:cardCornerRadius="5dp">
 
@@ -132,7 +134,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/call" />
+                    android:src="@drawable/call"
+                    app:tint="@color/pink" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -141,6 +144,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:id="@+id/message"
                 app:cardBackgroundColor="#ffe5eb">
 
                 <ImageView
@@ -158,6 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:visibility="gone"
             android:gravity="center_horizontal">
 
             <TextView
