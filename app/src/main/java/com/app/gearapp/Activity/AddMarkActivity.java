@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -40,15 +41,17 @@ import retrofit2.Response;
 
 public class AddMarkActivity extends AppCompatActivity {
     ActivityAddMarkBinding binding;
-ArrayList<RemarkModel> remarkModels=new ArrayList<>();
+    public static Activity activity;
+    public static String addmark = "";
+    ArrayList<RemarkModel> remarkModels = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAddMarkBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
+        activity = this;
+        addmark = getIntent().getStringExtra("addmarks");
 
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +112,7 @@ ArrayList<RemarkModel> remarkModels=new ArrayList<>();
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 binding.spinKit.setVisibility(View.GONE);
                 try {
-                    Log.e("remark_response",response.body().toString());
+                    Log.e("remark_response", response.body().toString());
                     JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body()));
                     String res = jsonObject.getString("message");
                     if (res.equals("Successfull")) {
@@ -121,14 +124,14 @@ ArrayList<RemarkModel> remarkModels=new ArrayList<>();
                         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(getApplicationContext());
                         binding.addRecylview.setLayoutManager(layoutManager1);
                         binding.addRecylview.setHasFixedSize(true);
-                        AddMarkAdapter adapter1 = new AddMarkAdapter(getApplicationContext(),remarkModels);
+                        AddMarkAdapter adapter1 = new AddMarkAdapter(getApplicationContext(), remarkModels);
                         binding.addRecylview.setAdapter(adapter1);
 
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.e("remark_ex",e.getMessage());
+                    Log.e("remark_ex", e.getMessage());
                     binding.spinKit.setVisibility(View.GONE);
 
                 }
@@ -137,7 +140,7 @@ ArrayList<RemarkModel> remarkModels=new ArrayList<>();
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Log.e("remark_error",t.getMessage());
+                Log.e("remark_error", t.getMessage());
                 binding.spinKit.setVisibility(View.GONE);
 
             }

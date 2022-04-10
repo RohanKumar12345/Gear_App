@@ -206,6 +206,7 @@
                     android:layout_weight="1"
                     android:outlineSpotShadowColor="@color/pink"
                     android:text="Failed"
+                    android:id="@+id/faild"
                     android:textAllCaps="false"
                     android:textColor="@color/pink"
                     app:strokeColor="@color/pink" />

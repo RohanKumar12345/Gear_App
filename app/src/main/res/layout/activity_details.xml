@@ -57,10 +57,11 @@
 
 
                 <TextView
+                    android:id="@+id/deliveredTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="12:38 08-09-2021"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -88,10 +89,11 @@
 
 
                 <TextView
+                    android:id="@+id/recipent_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Buyer"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -119,10 +121,11 @@
 
 
                 <TextView
+                    android:id="@+id/recipent_relationship"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Buyer"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -150,10 +153,11 @@
 
 
                 <TextView
+                    android:id="@+id/remark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="0"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -213,17 +217,17 @@
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="1dp"
                         android:elevation="10dp"
-                        app:cardBackgroundColor="@color/white"
+
                         app:cardCornerRadius="5dp">
 
-                        <ImageView
+                        `<ImageView
                             android:id="@+id/image1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:padding="5dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/corirar_img" />
+                   />
 
 
                     </androidx.cardview.widget.CardView>

@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.app.gearapp.Activity.DasbordActivity;
+import com.app.gearapp.Activity.DilverconfirmActivity;
 import com.app.gearapp.Activity.LoginActivity;
 import com.app.gearapp.Activity.SelectRecipienttypeActivity;
 import com.app.gearapp.Helpr.PrefrenceManager;
@@ -26,16 +27,13 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
 
                 if (new PrefrenceManager(getApplicationContext()).getUserId().equalsIgnoreCase("0")){
-                   //
                     Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }else {
-                    //
                     Intent intent=new Intent(getApplicationContext(), DasbordActivity.class);
                     startActivity(intent);
                     finish();
-
                 }
 
             }

@@ -1,13 +1,20 @@
 package com.app.gearapp.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.app.gearapp.Adapter.NoOneAdapter;
 import com.app.gearapp.Adapter.OnHoldAdapter;
@@ -55,8 +62,21 @@ public class SelectRecipienttypeActivity extends AppCompatActivity {
             }
         });
 
-        recipient(new PrefrenceManager(getApplicationContext()).getToken());
-        noOne(new PrefrenceManager(getApplicationContext()).getToken());
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            recipient(new PrefrenceManager(getApplicationContext()).getToken());
+            noOne(new PrefrenceManager(getApplicationContext()).getToken());
+            connected = true;
+        } else
+
+            alirtDilog();
+        connected = false;
+//
+//
+
+
     }
 
 
@@ -118,11 +138,14 @@ public class SelectRecipienttypeActivity extends AppCompatActivity {
 
     public void noOne(String token) {
         noOneModels.clear();
+        binding.spinKit.setVisibility(View.VISIBLE);
         GetDataService getDataService = RetrofitClintanse.getClient(token).create(GetDataService.class);
         Call<JsonObject> call = getDataService.recipient();
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                binding.spinKit.setVisibility(View.GONE);
+
                 try {
                     Log.e("recipient_res", response.body().toString());
                     JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body()));
@@ -148,6 +171,7 @@ public class SelectRecipienttypeActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.e("recipient_ex", e.getMessage());
+                    binding.spinKit.setVisibility(View.GONE);
 
                 }
 
@@ -156,9 +180,32 @@ public class SelectRecipienttypeActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 Log.e("recipient_error", t.getMessage());
+                binding.spinKit.setVisibility(View.GONE);
 
             }
         });
     }
+
+    public void alirtDilog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(SelectRecipienttypeActivity.this);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.network_layout, viewGroup, false);
+        builder.setView(dialogView);
+        builder.setCancelable(false);
+        AlertDialog alertDialog = builder.create();
+
+        TextView ok = dialogView.findViewById(R.id.ok);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+
+            }
+        });
+
+        alertDialog.show();
+    }
+
 }
 

@@ -4,4 +4,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
+    <string name="fcm_message">FCM Message</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="msg_token_fmt">InstanceID Token: %s</string>
+    <string name="forgetpas">Enter your mobile number for the verification process we will send 4 digit code your mobile</string>
+    <string name="thank_you">Thank you very much, you book my service, we will call you soon.</string>
+    <string name="sell_all"><u>See all</u></string>
 </resources>

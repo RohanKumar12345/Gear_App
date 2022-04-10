@@ -17,6 +17,12 @@ import com.app.gearapp.databinding.ActivityProofOfDeliveryBinding;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class ProofOfDeliveryActivity extends AppCompatActivity {
     ActivityProofOfDeliveryBinding binding;
@@ -26,8 +32,9 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
     Uri uri3 = Uri.parse("");
     Uri uri4 = Uri.parse("");
     Uri uri5 = Uri.parse("");
-    String imagecount = "", recpent_type, recpent_name;
+    public  static List<MultipartBody.Part> list = new ArrayList<>();
 
+    String imagecount = "", recpent_type, recpent_name, imagelist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,17 +59,20 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
         binding.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getApplicationContext(), SignatureActivity.class);
+                intent.putExtra("recpent_type",recpent_type);
                 startActivity(intent);
             }
         });
+
     }
 
     public void switchs(int position) {
 
         switch (position) {
             case 0:
-                Toast.makeText(ProofOfDeliveryActivity.this, "0 =" + position, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(ProofOfDeliveryActivity.this, "0 =" + position, Toast.LENGTH_SHORT).show();
                 ImagePicker.with(ProofOfDeliveryActivity.this)
                         .crop()                    //Crop image(Optional), Check Customization for more option
                         .compress(1024)            //Final image size will be less than 1 MB(Optional)
@@ -72,7 +82,7 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
                 position1 = 1;
                 break;
             case 1:
-                Toast.makeText(ProofOfDeliveryActivity.this, "1=" + position, Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(ProofOfDeliveryActivity.this, "1=" + position, Toast.LENGTH_SHORT).show();
 
                 ImagePicker.with(ProofOfDeliveryActivity.this)
                         .crop()                    //Crop image(Optional), Check Customization for more option
@@ -82,7 +92,7 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
                 position1 = 2;
                 break;
             case 2:
-                Toast.makeText(ProofOfDeliveryActivity.this, "2=" + position, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(ProofOfDeliveryActivity.this, "2=" + position, Toast.LENGTH_SHORT).show();
 
                 ImagePicker.with(ProofOfDeliveryActivity.this)
                         .crop()                    //Crop image(Optional), Check Customization for more option
@@ -98,7 +108,7 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
                         .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
                         .start(104);
 
-                Toast.makeText(ProofOfDeliveryActivity.this, "3=" + position, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(ProofOfDeliveryActivity.this, "3=" + position, Toast.LENGTH_SHORT).show();
 
                 break;
         }
@@ -112,13 +122,17 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
             switch (requestCode) {
                 case 101: {
                     uri1 = data.getData();
+                    File file = new File(uri1.getPath());
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("*/*"), file);
+                    MultipartBody.Part imagess = MultipartBody.Part.createFormData("image[]", uri1.getPath(), requestFile);
+                    list.add(imagess);
                     Log.e("image", uri1.toString());
                     imagecount = uri1.toString();
                     binding.image1.setImageURI(uri1);
                     if (uri1.equals("")) {
 
                     } else {
-                        binding.imageCount.setText("1/3");
+                        binding.imageCount.setText("1/5");
                         binding.close.setVisibility(View.VISIBLE);
                     }
 
@@ -127,6 +141,11 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
 
                 case 102: {
                     uri2 = data.getData();
+
+                    File file = new File(uri2.getPath());
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("*/*"), file);
+                    MultipartBody.Part imagess = MultipartBody.Part.createFormData("image[]", uri2.getPath(), requestFile);
+                    list.add(imagess);
                     Log.e("image", uri2.toString());
                     imagecount = uri1.toString();
                     binding.image2.setImageURI(uri2);
@@ -134,19 +153,23 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
                     if (uri2.equals("")) {
 
                     } else {
-                        binding.imageCount.setText("2/3");
+                        binding.imageCount.setText("2/5");
                         binding.close.setVisibility(View.VISIBLE);
                     }
                     break;
                 }
                 case 103: {
                     uri3 = data.getData();
+                    File file = new File(uri3.getPath());
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("*/*"), file);
+                    MultipartBody.Part imagess = MultipartBody.Part.createFormData("image[]", uri3.getPath(), requestFile);
+                    list.add(imagess);
                     Log.e("image", uri3.toString());
                     binding.image3.setImageURI(uri3);
                     if (uri2.equals("")) {
 
                     } else {
-                        binding.imageCount.setText("3/3");
+                        binding.imageCount.setText("3/5");
                         binding.close.setVisibility(View.VISIBLE);
                     }
                     break;
@@ -154,6 +177,10 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
 
                 case 104: {
                     uri4 = data.getData();
+                    File file = new File(uri4.getPath());
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("*/*"), file);
+                    MultipartBody.Part imagess = MultipartBody.Part.createFormData("image[]", uri4.getPath(), requestFile);
+                    list.add(imagess);
                     Log.e("image", uri4.toString());
                     binding.image4.setImageURI(uri4);
                     if (uri2.equals("")) {
@@ -167,6 +194,10 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
 
                 case 105: {
                     uri5 = data.getData();
+                    File file = new File(uri5.getPath());
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("*/*"), file);
+                    MultipartBody.Part imagess = MultipartBody.Part.createFormData("image[]", uri5.getPath(), requestFile);
+                    list.add(imagess);
                     Log.e("image", uri5.toString());
                     binding.image5.setImageURI(uri5);
                     if (uri2.equals("")) {
@@ -180,12 +211,7 @@ public class ProofOfDeliveryActivity extends AppCompatActivity {
                 }
             }
         }
-        Log.e("count", String.valueOf(imagecount.length()));
 
-    }
-
-    public void arrelis(){
-        File[] images={new File(uri1.getPath(),uri2.getPath())};
     }
 
 }

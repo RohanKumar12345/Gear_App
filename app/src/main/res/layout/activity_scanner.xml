@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/black"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
 
     <com.budiyev.android.codescanner.CodeScannerView
@@ -13,29 +13,37 @@
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
         app:flashButtonVisible="true"
+        app:frameAspectRatioHeight="1"
         app:frameAspectRatioWidth="1"
         app:frameColor="@android:color/white"
         app:frameCornersRadius="0dp"
         app:frameCornersSize="50dp"
-        app:frameAspectRatioHeight="1"
         app:frameSize="0.75"
         app:frameThickness="2dp"
-        app:maskColor="#77000000"/>
+        app:maskColor="#77000000" />
 
+    <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/spin_kit"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/loder"
+        android:visibility="gone" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/manualInput_Btn"
         style="@style/MyButtonTheme1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="30dp"
-        android:textColor="@color/white"
-        android:id="@+id/manualInput_Btn"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="60dp"
         android:text="Manual Input"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         app:cornerRadius="5dp" />
 
 

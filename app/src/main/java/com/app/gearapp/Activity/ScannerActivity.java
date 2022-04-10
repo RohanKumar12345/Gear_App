@@ -9,10 +9,13 @@ import androidx.cardview.widget.CardView;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Camera;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -58,6 +61,7 @@ public class ScannerActivity extends AppCompatActivity {
     private CodeScanner mCodeScanner;
     String no = "", contact_name = "", contact_address = "", contact_phone = "", id = "";
     PrefrenceManager prefrenceManager;
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +88,9 @@ public class ScannerActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
+                            Toast.makeText(ScannerActivity.this, "" + result.getText().toString(), Toast.LENGTH_SHORT).show();
                             setQrCode(result.getText().toString(), new PrefrenceManager(getApplicationContext()).getToken());
-                           // bottomNav();
+                            // bottomNav();
                         }
                     });
                 }
@@ -116,7 +120,19 @@ public class ScannerActivity extends AppCompatActivity {
                                 qrcode.setError("Enter The 8 Digit QR Code");
                                 qrcode.requestFocus();
                             } else {
-                                setQrCode(qrcode.getText().toString(), new PrefrenceManager(getApplicationContext()).getToken());
+
+                                boolean connected = false;
+                                ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                                if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                                    alertDialog.dismiss();
+                                    setQrCode(qrcode.getText().toString(), new PrefrenceManager(getApplicationContext()).getToken());
+
+                                    connected = true;
+                                } else
+
+                                    alirtDilog();
+                                connected = false;
 
                             }
 
@@ -139,13 +155,38 @@ public class ScannerActivity extends AppCompatActivity {
     }
 
 
+    public void alirtDilog() {
+
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(ScannerActivity.this);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.network_layout, viewGroup, false);
+        builder.setView(dialogView);
+        builder.setCancelable(false);
+        androidx.appcompat.app.AlertDialog alertDialog = builder.create();
+
+        TextView ok = dialogView.findViewById(R.id.ok);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+
+            }
+        });
+
+        alertDialog.show();
+    }
+
+
     public void setQrCode(String QrCode, String token) {
+        binding.spinKit.setVisibility(View.VISIBLE);
         GetDataService getDataService = RetrofitClintanse.getClient(token).create(GetDataService.class);
         Call<JsonObject> call = getDataService.qr_edit(QrCode);
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 Log.e("qr_response", response.body().toString());
+                Log.e("qr_response", QrCode);
+                binding.spinKit.setVisibility(View.GONE);
 
                 try {
                     JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body()));
@@ -158,7 +199,19 @@ public class ScannerActivity extends AppCompatActivity {
                         contact_name = jsonObject1.getString("contact_name");
                         contact_address = jsonObject1.getString("address");
                         contact_phone = jsonObject1.getString("contact_phone");
-                        bottomNav();
+
+                        boolean connected = false;
+                        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+                            bottomNav();
+                            connected = true;
+                        } else
+
+                            alirtDilog();
+                        connected = false;
+
                     } else {
                         Toast.makeText(ScannerActivity.this, "OR Code Wrong", Toast.LENGTH_SHORT).show();
                     }
@@ -166,6 +219,7 @@ public class ScannerActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.e("qr_ex", e.getMessage());
+                    binding.spinKit.setVisibility(View.GONE);
 
                 }
 
@@ -174,6 +228,7 @@ public class ScannerActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 Log.e("qr_error", t.getMessage());
+                binding.spinKit.setVisibility(View.GONE);
 
             }
         });
@@ -187,6 +242,7 @@ public class ScannerActivity extends AppCompatActivity {
         ImageView closeImage = sheetView.findViewById(R.id.close);
         MaterialButton deliverd = sheetView.findViewById(R.id.deliverd);
         MaterialButton noButton = sheetView.findViewById(R.id.noButton);
+        MaterialButton faild = sheetView.findViewById(R.id.faild);
         TextView ids = sheetView.findViewById(R.id.id);
         TextView name = sheetView.findViewById(R.id.name);
         TextView address = sheetView.findViewById(R.id.address);
@@ -247,14 +303,72 @@ public class ScannerActivity extends AppCompatActivity {
             }
         });
 
+
+        faild.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean connected = false;
+                ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+
+                    failed(new PrefrenceManager(getApplicationContext()).getToken(), id);
+                    bottomSheetDialog.dismiss();
+                    connected = true;
+                } else
+
+                    alirtDilog();
+                connected = false;
+
+            }
+        });
+
         closeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
+
         bottomSheetDialog.show();
 
+    }
+
+
+    public void failed(String token, String product_id) {
+        binding.spinKit.setVisibility(View.VISIBLE);
+        GetDataService getDataService = RetrofitClintanse.getClient(token).create(GetDataService.class);
+        Call<JsonObject> call = getDataService.failed(product_id);
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                binding.spinKit.setVisibility(View.GONE);
+                try {
+                    Log.e("faild_res", response.body().toString());
+                    JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body()));
+                    String res = jsonObject.getString("message");
+                    if (res.equals("Success")) {
+                        Toast.makeText(ScannerActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ScannerActivity.this, "Not Success", Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e("faild_ex", e.getMessage());
+                    binding.spinKit.setVisibility(View.GONE);
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                Log.e("faild_error", t.getMessage());
+                binding.spinKit.setVisibility(View.GONE);
+
+            }
+        });
     }
 
     @Override

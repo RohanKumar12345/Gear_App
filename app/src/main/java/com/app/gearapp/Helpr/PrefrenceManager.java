@@ -23,6 +23,15 @@ public class PrefrenceManager {
         editor.commit();
     }
 
+    public String getProductid(){
+        return sharedPreferences.getString( "productid","0" );
+    }
+
+    public void setProductid(String productid){
+        editor.putString( "productid",productid );
+        editor.commit();
+    }
+
     public String getQrId(){
         return sharedPreferences.getString( "qrid","0" );
     }

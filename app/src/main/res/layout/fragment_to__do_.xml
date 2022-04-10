@@ -83,11 +83,11 @@
                 android:layout_height="match_parent"
                 android:fillViewport="true">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/TodoRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/TodoRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
 
 
             </androidx.core.widget.NestedScrollView>

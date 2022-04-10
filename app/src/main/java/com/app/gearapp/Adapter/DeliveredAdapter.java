@@ -50,11 +50,11 @@ public class DeliveredAdapter extends RecyclerView.Adapter<DeliveredAdapter.View
             public void onClick(View v) {
                 Intent intent=new Intent(context, OrderInfoActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("orderInfor","dilvery");
                 intent.putExtra("id", todoModels.get(position).getId());
                 intent.putExtra("address", todoModels.get(position).getAddress());
                 intent.putExtra("name", todoModels.get(position).getContact_name());
                 intent.putExtra("mobile", todoModels.get(position).getContact_phone());
-                intent.putExtra("name", todoModels.get(position).getContact_name());
                 intent.putExtra("delivery_date", todoModels.get(position).getDelivery_date());
                 context.startActivity(intent);
             }

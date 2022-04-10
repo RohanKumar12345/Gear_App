@@ -45,6 +45,7 @@ public class OnHoldAdapter extends RecyclerView.Adapter<OnHoldAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, OnHoldActivity.class);
+                intent.putExtra("onhold","onholdactivity");
                 intent.putExtra("mobile",todoModels.get(position).getContact_phone());
                 intent.putExtra("createDate",todoModels.get(position).getCreated_at());
                 intent.putExtra("upDateTime",todoModels.get(position).getUpdated_at());

@@ -1,5 +1,6 @@
 package com.app.gearapp.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,10 +20,16 @@ import android.widget.Toast;
 import com.app.gearapp.Helpr.GetDataService;
 import com.app.gearapp.Helpr.PrefrenceManager;
 import com.app.gearapp.Helpr.RetrofitClintanse;
+import com.app.gearapp.MainActivity;
 import com.app.gearapp.R;
 
 import com.app.gearapp.databinding.ActivityLoginBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -54,8 +61,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                         connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
                     if (validation()) {
-                        login();
+                        sendFirebaseNotification();
                     }
+
                     connected = true;
                 } else
 
@@ -67,6 +75,31 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+    private void sendFirebaseNotification() {
+        FirebaseApp.initializeApp( LoginActivity.this );
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener( new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w( "FCM", "getInstanceId failed", task.getException() );
+                            return;
+                        }
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+                        // Log and toast
+                        String msg = getString( R.string.msg_token_fmt, token );
+                        Log.e( "MSG", msg + " | " + token );
+                        Log.e("token",token);
+
+                        login(token,msg);
+
+                        //  Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                } );
+    }
+
 
 
     public void alirtDilog() {
@@ -106,10 +139,10 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
-    public void login() {
+    public void login(String firbase_tonek,String firbase_key) {
         binding.spinKit.setVisibility(View.VISIBLE);
         GetDataService getDataService = RetrofitClintanse.getRetrofit().create(GetDataService.class);
-        Call<JsonObject> call = getDataService.login(binding.loginId.getText().toString(), binding.password.getText().toString());
+        Call<JsonObject> call = getDataService.login(binding.loginId.getText().toString(), binding.password.getText().toString(),firbase_tonek,firbase_key);
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {

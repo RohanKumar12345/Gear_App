@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="SGO10632060179"
+                android:text=""
                 android:id="@+id/id"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Blk 401 Hougang Avenue 10, #07-1164,530401"
+                android:text=""
                 android:textColor="@color/white"
                 android:id="@+id/address"
                 android:textSize="12dp" />
@@ -126,6 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Tang Chi Cong"
+                android:id="@+id/name"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -134,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Tel: +6592236540"
+                android:text=""
                 android:id="@+id/mobile"
                 android:textColor="@color/black"
                 android:textSize="18dp"
@@ -170,7 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="12:38 08-09-2021"
+                android:text=""
                 android:id="@+id/deliveredTime"
                 android:textColor="@color/black"
                 android:textSize="18dp"
@@ -242,6 +243,7 @@
                     android:layout_centerVertical="true"
                     android:src="@drawable/plus"
                     app:tint="@color/pink" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -249,6 +251,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/plus"
                     android:text="Add"
+                    android:id="@+id/addmark_text"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
