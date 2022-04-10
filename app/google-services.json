@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "338493568642",
+    "project_id": "gear-app-a14e0",
+    "storage_bucket": "gear-app-a14e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338493568642:android:594c4eb877d2a63bf7269b",
+        "android_client_info": {
+          "package_name": "com.app.gearapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338493568642-r81qvo88pdmjlab6ofooqqk1m8r20qr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAspVqPDfiNECakyYl7LyFO6i3w3yJlxE0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338493568642-r81qvo88pdmjlab6ofooqqk1m8r20qr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
